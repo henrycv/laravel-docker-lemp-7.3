@@ -1,0 +1,67 @@
+version: '3'
+services:
+
+  # #PHP Service
+  docker-php:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    image: docker-php
+    container_name: docker-php
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /usr/share/nginx/html
+    links:
+      - docker-mysql
+    volumes:
+      - ./:/usr/share/nginx/html
+      - ./docker/php/config/php.ini:/usr/local/etc/php/php.ini
+    networks:
+      - app-network
+
+  #Nginx Service
+  docker-nginx:
+    image: nginx
+    container_name: docker-nginx
+    links:
+      - docker-php
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/usr/share/nginx/html
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - app-network
+
+  #MySQL Service
+  docker-mysql:
+    image: mysql
+    container_name: docker-mysql
+    tty: true
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: test
+      MYSQL_DATABASE: test
+      MYSQL_PASSWORD: test
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql/
+      # - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
