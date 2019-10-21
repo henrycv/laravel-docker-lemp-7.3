@@ -1,3 +1,31 @@
+
+## About Project 
+
+This project intend provide a LEMP stack environment for Laravel projects.
+
+
+## Requirements
+
+- <a href="https://docs.docker.com/" target="_blank">Docker</a>
+- <a href="https://docs.docker.com/compose/" target="_blank">Docker Compose</a>
+
+
+## How it works
+
+Open an instance of terminal and run the following commands:
+- <code>$ git clone https://github.com/henrycv/laravel-docker-lemp-7.3.git</code >
+- <code>$ docker-compose up -d</code >
+
+
+## About Docker
+
+<p align="center"><img src="https://www.docker.com/sites/default/files/d8/styles/role_icon/public/2019-07/Moby-logo.png?itok=sYH_JEaJ" width="400"></p>
+
+Docker is a tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other dependencies, and ship it all out as one package. By doing so, thanks to the container, the developer can rest assured that the application will run on any other Linux machine regardless of any customized settings that machine might have that could differ from the machine used for writing and testing the code.
+
+
+## About Laravel
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
@@ -6,8 +34,6 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
-
-## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
